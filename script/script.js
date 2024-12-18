@@ -1,37 +1,20 @@
-document.getElementById('loadButton').addEventListener('click', function() {
+document.getElementById('openLinkButton').addEventListener('click', function() {
     const url = document.getElementById('urlInput').value;
-    const iframe = document.getElementById('webpageFrame');
-
-    // Load the URL in the iframe
-    iframe.src = url;
-
-    // Wait for the iframe to load
-    iframe.onload = function() {
-        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-
-        // Log to console output
-        logToConsole(`Loaded ${url}`);
-
-        // Add click event to elements in the iframe
-        iframeDocument.body.addEventListener('click', function(event) event.preventDefault();
-            const targetElement = event.target;
-            highlightElement(targetElement);
-            logToConsole(`Clicked on: ${targetElement.tagName}`);
-        });
-    };
+    if (url) {
+        // Open the URL in a new tab
+        window.open(url, '_blank');
+        document.getElementById('message').textContent = `Opened: ${url}`;
+    } else {
+        document.getElementById('message').textContent = 'Please enter a valid URL.';
+    }
 });
 
-function logToConsole(message) {
-    const consoleOutput = document.getElementById('consoleOutput');
-    consoleOutput.innerHTML += `<div>${message}</div>`;
-    consoleOutput.scrollTop = consoleOutput.scrollHeight; // Auto-scroll to the bottom
-}
-
-function highlightElement(element) {
-    // Remove highlight from previously highlighted elements
-    const highlightedElements = document.querySelectorAll('.highlight');
-    highlightedElements.forEach(el => el.classList.remove('highlight'));
-
-    // Highlight the clicked element
-    element.classList.add('highlight');
-}
+document.getElementById('runCodeButton').addEventListener('click', function() {
+    const code = document.getElementById('consoleInput').value;
+    try {
+        const result = eval(code);
+        document.getElementById('consoleOutput').textContent = result;
+    } catch (error) {
+        document.getElementById('consoleOutput').textContent = `Error: ${error.message}`;
+    }
+});
