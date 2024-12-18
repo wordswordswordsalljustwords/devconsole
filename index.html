@@ -3,31 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Resource Inspector</title>
-    <link rel="stylesheet" href="style/styles.css">
+    <title>Open Link with Custom Console</title>
+    <link rel="stylesheet" href="/style/styles.css">
 </head>
 <body>
-    <h1>Web Resource Inspector</h1>
-    <input type="text" id="urlInput" placeholder="Enter a URL" />
-    <button id="loadButton">Load URL</button>
-
-    <div id="iframeContainer">
-        <iframe id="webpageFrame"></iframe>
+    <div class="container">
+        <h1>Open a Link in a New Tab</h1>
+        <input type="text" id="urlInput" placeholder="Enter URL here" />
+        <button id="openLinkButton">Open Link</button>
+        <p id="message"></p>
     </div>
-
-    <div id="tabs">
-        <div class="tab active" id="consoleTab">Console</div>
-        <div class="tab" id="elementsTabButton">Elements</div>
+    <div class="console">
+        <h2>Custom Console</h2>
+        <textarea id="consoleInput" placeholder="Type your JavaScript code here..."></textarea>
+        <button id="runCodeButton">Run Code</button>
+        <pre id="consoleOutput"></pre>
     </div>
-
-    <div id="console">
-        <div id="consoleOutput"></div>
-        <div id="elementsTab">
-            <h3>Elements:</h3>
-            <div id="elementsOutput"></div>
-        </div>
-    </div>
-
-    <script src="script/script.js"></script>
+    <script src="/script/script.js"></script>
 </body>
 </html>
