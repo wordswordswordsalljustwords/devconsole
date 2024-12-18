@@ -13,10 +13,10 @@ document.getElementById('loadButton').addEventListener('click', function() {
         logToConsole(`Loaded ${url}`);
 
         // Add click event to elements in the iframe
-        iframeDocument.body.addEventListener('click', function(event) {
-            event.preventDefault(); const targetElement = event.target;
+        iframeDocument.body.addEventListener('click', function(event) event.preventDefault();
+            const targetElement = event.target;
             highlightElement(targetElement);
-            logToConsole(`Clicked on : ${targetElement.tagName}`);
+            logToConsole(`Clicked on: ${targetElement.tagName}`);
         });
     };
 });
@@ -24,14 +24,14 @@ document.getElementById('loadButton').addEventListener('click', function() {
 function logToConsole(message) {
     const consoleOutput = document.getElementById('consoleOutput');
     consoleOutput.innerHTML += `<div>${message}</div>`;
-    consoleOutput.scrollTop = consoleOutput.scrollHeight; // Scroll to the bottom
+    consoleOutput.scrollTop = consoleOutput.scrollHeight; // Auto-scroll to the bottom
 }
 
 function highlightElement(element) {
-    // Remove previous highlights
+    // Remove highlight from previously highlighted elements
     const highlightedElements = document.querySelectorAll('.highlight');
     highlightedElements.forEach(el => el.classList.remove('highlight'));
 
-    // Highlight the current element
+    // Highlight the clicked element
     element.classList.add('highlight');
 }
